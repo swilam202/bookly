@@ -1,0 +1,6 @@
+import 'package:flutter/material.dart';
+
+
+const kBackgroundColor = Color(0xff100B20);
+const kLogo = 'assets/images/logo.svg';
+const kSplashAnimationDuration = Duration(seconds: 4);
