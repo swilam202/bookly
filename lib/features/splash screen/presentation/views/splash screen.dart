@@ -1,6 +1,8 @@
+import 'package:bookly/core/utils/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
+
 
 import '../../../../constants.dart';
 import '../../../home page/presentation/views/home page.dart';
@@ -26,6 +28,14 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
 
     initSplashAnimation();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    logoController.dispose();
+    qoutesController.dispose();
   }
 
   @override
@@ -59,11 +69,7 @@ class _SplashScreenState extends State<SplashScreen>
       (value) {
         qoutesController.forward().then(
           (value) {
-            Get.to(
-              const HomePage(),
-              transition: Transition.cupertinoDialog,
-              duration: kSplashAnimationDuration,
-            );
+            GoRouter.of(context).pushReplacement(AppRouter.rHome);
           },
         );
       },

@@ -1,19 +1,19 @@
 
 
 
+import 'package:bookly/core/widgete/custom%20horizontal%20list%20view.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/styles.dart';
+import '../../../../../core/widgete/custom vertical list view.dart';
 import 'custom app bar.dart';
-import 'custom best seller list view.dart';
-import 'custom recommended list view.dart';
 
 class HomePageBody extends StatelessWidget {
   const HomePageBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return  const SafeArea(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 30),
         child: CustomScrollView(
@@ -24,7 +24,7 @@ class HomePageBody extends StatelessWidget {
                crossAxisAlignment: CrossAxisAlignment.start,
                children: [
                  CustomAppBar(),
-                 CustomRecommendedListView(),
+                 CustomHorizontalListView(),
                  SizedBox(height: 48),
                  Text('Best seller',style: Styles.style18),
                  SizedBox(height: 20),
@@ -33,7 +33,7 @@ class HomePageBody extends StatelessWidget {
            ),
             SliverToBoxAdapter(
 
-              child: CustomBestSellerListView(),
+              child: CustomVerticalListView(),
 
             ),
 

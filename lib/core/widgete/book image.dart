@@ -12,8 +12,12 @@ class BookImage extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
       ),
       child: AspectRatio(
-        aspectRatio: 2.7/4,
-        child: SvgPicture.asset('assets/images/test image.svg',fit: BoxFit.cover,),),
+        aspectRatio: 2.7 / 4,
+        child: SvgPicture.asset(
+          'assets/images/test image.svg',
+          fit: BoxFit.cover,
+        ),
+      ),
     );
   }
 }

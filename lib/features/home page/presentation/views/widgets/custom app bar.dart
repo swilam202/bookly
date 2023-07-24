@@ -1,7 +1,9 @@
 
 
+import 'package:bookly/core/utils/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../constants.dart';
 
@@ -16,7 +18,9 @@ class CustomAppBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SvgPicture.asset(kLogo),
-          IconButton(onPressed: (){}, icon: const Icon(Icons.search),),
+          IconButton(onPressed: (){
+            GoRouter.of(context).push(AppRouter.rSearch);
+          }, icon: const Icon(Icons.search),),
         ],
       ),
     );

@@ -7,7 +7,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../core/utils/styles.dart';
 
 import 'widgets/custom best seller list view item.dart';
-import 'widgets/custom recommended list view.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
