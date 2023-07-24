@@ -16,15 +16,27 @@ class HomePageBody extends StatelessWidget {
     return const SafeArea(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 30),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomAppBar(),
-            CustomRecommendedListView(),
-            SizedBox(height: 48),
-            Text('Best seller',style: Styles.style18),
-            SizedBox(height: 20),
-            CustomBestSellerListView(),
+        child: CustomScrollView(
+          //
+          slivers: [
+           SliverToBoxAdapter(
+             child: Column(
+               crossAxisAlignment: CrossAxisAlignment.start,
+               children: [
+                 CustomAppBar(),
+                 CustomRecommendedListView(),
+                 SizedBox(height: 48),
+                 Text('Best seller',style: Styles.style18),
+                 SizedBox(height: 20),
+               ],
+             ),
+           ),
+            SliverToBoxAdapter(
+
+              child: CustomBestSellerListView(),
+
+            ),
+
           ],
         ),
       ),

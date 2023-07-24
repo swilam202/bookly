@@ -1,3 +1,4 @@
+import 'package:bookly/core/widgete/book%20image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -11,21 +12,12 @@ class CustomBestSellerListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Container(
-          margin: const EdgeInsets.symmetric(vertical: 10),
-          height: 150,
-          decoration: BoxDecoration(
-            color: Colors.red,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: AspectRatio(
-            aspectRatio: 2.7 / 4,
-            child: SvgPicture.asset(
-              'assets/images/test image.svg',
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
+       const Padding(
+         padding: EdgeInsets.symmetric(vertical: 10),
+         child: SizedBox(
+            height: 150,
+              child: BookImage(),),
+       ),
         const SizedBox(width: 30),
         Expanded(
           child: Column(
