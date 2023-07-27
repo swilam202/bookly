@@ -3,16 +3,17 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../data/repos/home page repo implementation.dart';
 import '../../../data/repos/home page repo.dart';
 import 'featured book state.dart';
 
 class FeaturedBookCubit extends Cubit<FeaturedBookState>{
   FeaturedBookCubit(this.homePageRepo):super(FeaturedBookInitialState());
-  HomePageRepo homePageRepo;
+  HomePageRepoImplementation homePageRepo;
 
   void getData()async{
     emit(FeaturedBookLoadingState());
-    var data = await homePageRepo.fetchFeaturedData();
+    var data = await HomePageRepoImplementation().fetchFeaturedData();
     data.fold((failure) {
       emit(FeaturedBookFailureState(failure.errorMessage));
     } , (books){

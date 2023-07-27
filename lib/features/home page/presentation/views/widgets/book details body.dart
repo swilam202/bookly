@@ -22,8 +22,11 @@ class BookDetailsBody extends StatelessWidget {
             const SizedBox(height: 30),
             const SizedBox(
               height: 250,
-              child: BookImage(),
-            ),
+               child: SizedBox()),
+              //   BookImage(
+            //       image:
+            //           'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dfstudio.com%2Fdigital-image-size-and-resolution-what-do-you-need-to-know%2F&psig=AOvVaw1LxTwdsxqzUBhxLlCCgHG6&ust=1690550460439000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOjn6q_9roADFQAAAAAdAAAAABAE'),
+            // ),
             const SizedBox(height: 38),
             const Text(
               'The Jungle Book',
@@ -38,7 +41,7 @@ class BookDetailsBody extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 6),
-            const BookRating(),
+             BookRating(ratingPercentage: 5,rates: 23),
             const SizedBox(height: 37),
             Row(
               children: [
@@ -83,7 +86,11 @@ class BookDetailsBody extends StatelessWidget {
             const SizedBox(height: 16),
             const SizedBox(
               height: 120,
-              child: CustomHorizontalListView(),
+              // child: CustomHorizontalListView(
+              //   itemCount: 10,
+              //   // imageUrl:
+              //   //     'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dfstudio.com%2Fdigital-image-size-and-resolution-what-do-you-need-to-know%2F&psig=AOvVaw1LxTwdsxqzUBhxLlCCgHG6&ust=1690550460439000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOjn6q_9roADFQAAAAAdAAAAABAE',
+              // ),
             ),
             const SizedBox(height: 40),
           ],

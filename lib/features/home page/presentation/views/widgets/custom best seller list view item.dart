@@ -1,5 +1,6 @@
 import 'package:bookly/core/widgete/book%20image.dart';
 import 'package:bookly/core/widgete/book%20rating.dart';
+import 'package:bookly/features/home%20page/data/models/book_model/book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -7,8 +8,9 @@ import '../../../../../constants.dart';
 import '../../../../../core/utils/styles.dart';
 
 class CustomBestSellerListViewItem extends StatelessWidget {
-  const CustomBestSellerListViewItem({super.key,required this.onTap});
+  const CustomBestSellerListViewItem({super.key,required this.onTap,required this.book});
 
+  final BookModel book;
   final Function() onTap;
   @override
   Widget build(BuildContext context) {
@@ -16,28 +18,28 @@ class CustomBestSellerListViewItem extends StatelessWidget {
       onTap: onTap,
       child: Row(
         children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10),
+           Padding(
+            padding:const  EdgeInsets.symmetric(vertical: 10),
             child: SizedBox(
               height: 150,
-              child: BookImage(),
+              child: BookImage(image: book.volumeInfo.imageLinks!.thumbnail),
             ),
           ),
-          const SizedBox(width: 30),
+          const SizedBox(width: 15),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  'Harry Potter and the Goblet of Fire',
+                  book.volumeInfo.title!,
                   style: Styles.style20.copyWith(fontFamily: kGTSectraFine),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  'J.K. Rowling',
+                  book.volumeInfo.authors![0],
                   style: Styles.style14.copyWith(
                     color: const Color(0xff707070),
                   ),
@@ -47,10 +49,10 @@ class CustomBestSellerListViewItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '19.99 €',
+                     'dode' ,
                       style: Styles.style20.copyWith(fontWeight: FontWeight.bold),
                     ),
-                   const BookRating(),
+                    BookRating(rates: 5,ratingPercentage:  5),
                   ],
                 ),
               ],

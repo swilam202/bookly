@@ -22,9 +22,9 @@ class SearchPageBody extends StatelessWidget {
                 ],
               ),
             ),
-            SliverToBoxAdapter(
-              child: CustomVerticalListView(),
-            )
+            // SliverToBoxAdapter(
+            //   child: CustomVerticalListView(),
+            // )
           ],
         ),
       ),

@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import '../utils/styles.dart';
 
 class BookRating extends StatelessWidget {
-  const BookRating({super.key});
+  const BookRating({super.key,required this.rates,required this.ratingPercentage});
 
+  final int ratingPercentage;
+  final int rates;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -19,13 +21,13 @@ class BookRating extends StatelessWidget {
         ),
         const SizedBox(width: 6.3),
         Text(
-          '4.8',
+          ratingPercentage.toString(),
           style: Styles.style16
               .copyWith(fontWeight: FontWeight.w600),
         ),
         const SizedBox(width: 9),
         Text(
-          '(2390)',
+          '($rates)',
           style: Styles.style14.copyWith(
             color: const Color(0xff707070),
           ),
