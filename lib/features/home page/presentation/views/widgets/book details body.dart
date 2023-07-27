@@ -1,3 +1,4 @@
+import 'package:bookly/features/home%20page/data/models/book_model/book_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/styles.dart';
@@ -8,8 +9,9 @@ import '../../../../../core/widgete/custom horizontal list view.dart';
 import 'book details app bar.dart';
 
 class BookDetailsBody extends StatelessWidget {
-  const BookDetailsBody({super.key});
+  const BookDetailsBody({super.key,required this.book});
 
+  final BookModel book;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -20,28 +22,28 @@ class BookDetailsBody extends StatelessWidget {
           children: [
             const BookDetailsAppBar(),
             const SizedBox(height: 30),
-            const SizedBox(
+             SizedBox(
               height: 250,
-               child: SizedBox()),
-              //   BookImage(
-            //       image:
-            //           'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dfstudio.com%2Fdigital-image-size-and-resolution-what-do-you-need-to-know%2F&psig=AOvVaw1LxTwdsxqzUBhxLlCCgHG6&ust=1690550460439000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOjn6q_9roADFQAAAAAdAAAAABAE'),
-            // ),
+               child:
+                BookImage(
+                  image: book.volumeInfo.imageLinks!.thumbnail,
+                ),),
             const SizedBox(height: 38),
-            const Text(
-              'The Jungle Book',
+             Text(
+              book.volumeInfo.title!,
               style: Styles.style30,
+               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 6),
             Text(
-              'Rudyard Kipling',
+              book.volumeInfo.authors![0],
               style: Styles.style18.copyWith(
                 color: Colors.white.withOpacity(0.7),
                 fontWeight: FontWeight.w500,
               ),
             ),
             const SizedBox(height: 6),
-             BookRating(ratingPercentage: 5,rates: 23),
+            BookRating(rates: book.volumeInfo.ratingsCount != null? int.parse(book.volumeInfo.ratingsCount.toString()) : 0,ratingPercentage: book.volumeInfo.averageRating != null? int.parse(book.volumeInfo.averageRating.toString()) : 0),
             const SizedBox(height: 37),
             Row(
               children: [
@@ -50,7 +52,7 @@ class BookDetailsBody extends StatelessWidget {
                     backgroundColor: Colors.white,
                     foregroundColor: Colors.black,
                     text: const Text(
-                      '19.99\$',
+                      'Free',
                       style: Styles.style18,
                     ),
                     onPressed: () {},

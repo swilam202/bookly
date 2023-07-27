@@ -39,7 +39,7 @@ class _HomePageBodyState extends State<HomePageBody> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30),
         child: CustomScrollView(
-          //
+          physics: const BouncingScrollPhysics(),
           slivers: [
            SliverToBoxAdapter(
              child: Column(
@@ -60,13 +60,13 @@ class _HomePageBodyState extends State<HomePageBody> {
                    }
                  }),
 
-                 SizedBox(height: 48),
-                 Text('Best seller',style: Styles.style18),
+                 const SizedBox(height: 48),
+                 Text('Newest Books',style: Styles.style18),
                  SizedBox(height: 20),
                ],
              ),
            ),
-            SliverToBoxAdapter(
+            SliverFillRemaining(
 
 
               child:  BlocBuilder<NewestBookCubit,NewestBookState>(builder: (context,state){

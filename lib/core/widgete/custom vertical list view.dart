@@ -1,3 +1,4 @@
+import 'package:bookly/features/home%20page/presentation/views/book%20details.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -13,12 +14,12 @@ class CustomVerticalListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: 10,
-        shrinkWrap: true,
+        itemCount: books.length,
+        //shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context,index){
           return  CustomBestSellerListViewItem(onTap: (){
-            GoRouter.of(context).push(AppRouter.rDetails);
+           Navigator.of(context).push(MaterialPageRoute(builder: (context)=> BookDetails(book: books[index],),),);
           },book: books[index],);
         }
     );
