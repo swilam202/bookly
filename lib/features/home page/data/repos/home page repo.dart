@@ -9,4 +9,5 @@ import '../models/book_model/book_model.dart';
 abstract class HomePageRepo{
   Future<Either<Failures,List<BookModel>>> fetchFeaturedData();
   Future<Either<Failures,List<BookModel>>> fetchNewestData();
+  Future<Either<Failures,List<BookModel>>> fetchSimilarData({required String category});
 }

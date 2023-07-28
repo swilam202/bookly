@@ -2,6 +2,7 @@ import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/router.dart';
 import 'package:bookly/features/home%20page/presentation/manger/featured%20book%20manager/featured%20book%20cubit.dart';
 import 'package:bookly/features/home%20page/presentation/manger/newest%20book%20manager/newest%20book%20cubit.dart';
+import 'package:bookly/features/home%20page/presentation/manger/similar%20book%20manger/similar%20book%20cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -24,6 +25,7 @@ class Bookly extends StatelessWidget {
       providers: [
         BlocProvider(create: (context)=>FeaturedBookCubit(HomePageRepoImplementation())..getData()),
         BlocProvider(create: (context)=>NewestBookCubit(HomePageRepoImplementation())..getData()),
+        BlocProvider(create: (context)=> SimilarBookCubit(homePageRepo: HomePageRepoImplementation())),
       ],
       child: MaterialApp.router(
         theme: ThemeData.dark().copyWith(

@@ -7,8 +7,8 @@ import '../utils/styles.dart';
 class BookRating extends StatelessWidget {
   const BookRating({super.key,required this.rates,required this.ratingPercentage});
 
-  final int ratingPercentage;
-  final int rates;
+  final String ratingPercentage;
+  final String rates;
   @override
   Widget build(BuildContext context) {
     return Row(

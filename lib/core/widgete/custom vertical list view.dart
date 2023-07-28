@@ -18,9 +18,7 @@ class CustomVerticalListView extends StatelessWidget {
         //shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context,index){
-          return  CustomBestSellerListViewItem(onTap: (){
-           Navigator.of(context).push(MaterialPageRoute(builder: (context)=> BookDetails(book: books[index],),),);
-          },book: books[index],);
+          return  CustomBestSellerListViewItem(book: books[index],);
         }
     );
   }

@@ -6,23 +6,26 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/styles.dart';
+import '../book details.dart';
 
 class CustomBestSellerListViewItem extends StatelessWidget {
-  const CustomBestSellerListViewItem({super.key,required this.onTap,required this.book});
+  const CustomBestSellerListViewItem({super.key,required this.book});
 
   final BookModel book;
-  final Function() onTap;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: (){
+        Navigator.of(context).push(MaterialPageRoute(builder: (context)=> BookDetails(book: book,),),);
+      },
       child: Row(
         children: [
            Padding(
             padding:const  EdgeInsets.symmetric(vertical: 10),
             child: SizedBox(
               height: 150,
-              child: BookImage(image: book.volumeInfo.imageLinks!.thumbnail),
+              child: BookImage(image: book.volumeInfo.imageLinks?.thumbnail),
             ),
           ),
           const SizedBox(width: 15),
@@ -32,14 +35,14 @@ class CustomBestSellerListViewItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  book.volumeInfo.title!,
+                  book.volumeInfo.title ?? 'Untitled',
                   style: Styles.style20.copyWith(fontFamily: kGTSectraFine),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  book.volumeInfo.authors![0],
+                  book.volumeInfo.authors?[0] ?? 'Unknown',
                   style: Styles.style14.copyWith(
                     color: const Color(0xff707070),
                   ),
@@ -52,7 +55,7 @@ class CustomBestSellerListViewItem extends StatelessWidget {
                      'Free' ,
                       style: Styles.style20.copyWith(fontWeight: FontWeight.bold),
                     ),
-                    BookRating(rates: book.volumeInfo.ratingsCount != null? int.parse(book.volumeInfo.ratingsCount.toString()) : 0,ratingPercentage: book.volumeInfo.averageRating != null? int.parse(book.volumeInfo.averageRating.toString()) : 0),
+                    BookRating(rates: book.volumeInfo.ratingsCount != null? book.volumeInfo.ratingsCount.toString() : '0',ratingPercentage: book.volumeInfo.averageRating != null? book.volumeInfo.averageRating.toString() : '0'),
                   ],
                 ),
               ],

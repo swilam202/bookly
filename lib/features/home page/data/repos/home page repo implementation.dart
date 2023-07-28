@@ -10,28 +10,26 @@ class HomePageRepoImplementation implements HomePageRepo {
 
   @override
   Future<Either<Failures, List<BookModel>>> fetchFeaturedData() async {
-   /// print('went here ----------------------------------------------');
+    /// print('went here ----------------------------------------------');
     try {
       Map<String, dynamic> data = await apiService.getData(
           endpoint:
-              'Filtering=free-ebooks&Sorting=relevance&q=subject:programming');
+          'Filtering=free-ebooks&Sorting=relevance&q=engineering');
       List<BookModel> books = [];
       for (var element in data['items']) {
         books.add(BookModel.fromJson(element));
       }
-     // print('////////////////////////////// done /////////////////////////////////////////');
+      // print('////////////////////////////// done /////////////////////////////////////////');
       //print('${books[0].kind}***************************************************************');
-     // print('went here ++++++++++++++++++++++++++++++++++++++++++++++++++');
+      // print('went here ++++++++++++++++++++++++++++++++++++++++++++++++++');
       return right(books);
     } catch (e) {
       if (e is DioException) {
         return left(Failures.exception(e));
       } else { //print('////////////////////////////// done /////////////////////////////////////////');
         return left(Failures('oops! something went wrong'));
-
       }
     }
-
   }
 
   @override
@@ -39,7 +37,28 @@ class HomePageRepoImplementation implements HomePageRepo {
     try {
       Map<String, dynamic> data = await apiService.getData(
           endpoint:
-              'Filtering=free-ebooks&Sorting=newest&q=subject:programming');
+          'Filtering=free-ebooks&Sorting=newest&q=programming');
+      List<BookModel> books = [];
+      for (var element in data['items']) {
+        books.add(BookModel.fromJson(element));
+      }
+      return right(books);
+    } catch (e) {
+      if (e is DioException) {
+        return left(Failures.exception(e));
+      } else {
+        return left(Failures('oops! something went wrong'));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failures, List<BookModel>>> fetchSimilarData(
+      {required String category}) async {
+    try {
+      Map<String, dynamic> data = await apiService.getData(
+          endpoint:
+          'Filtering=free-ebooks&Sorting=newest&q=$category');
       List<BookModel> books = [];
       for (var element in data['items']) {
         books.add(BookModel.fromJson(element));
