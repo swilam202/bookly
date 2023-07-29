@@ -1,4 +1,6 @@
+import 'package:bookly/features/search%20page/manager/search%20manager/search%20cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({super.key});
@@ -11,6 +13,9 @@ class CustomTextField extends StatelessWidget {
         enabledBorder: buildOutlineInputBorder(),
         focusedBorder: buildOutlineInputBorder(),
       ),
+      onChanged: (data){
+        BlocProvider.of<SearchBookCubit>(context).getData(category: data);
+      },
     );
   }
 }

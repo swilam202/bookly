@@ -1,7 +1,7 @@
 import 'package:bookly/core/utils/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
+//import 'package:go_router/go_router.dart';
 
 
 import '../../../../constants.dart';
@@ -69,7 +69,7 @@ class _SplashScreenState extends State<SplashScreen>
       (value) {
         qoutesController.forward().then(
           (value) {
-            GoRouter.of(context).pushReplacement(AppRouter.rHome);
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>HomePage(),),);
           },
         );
       },

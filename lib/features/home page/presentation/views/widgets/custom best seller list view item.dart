@@ -52,7 +52,7 @@ class CustomBestSellerListViewItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                     'Free' ,
+                      book.saleInfo?.retailPrice?.amount == null? 'Free':book.saleInfo!.retailPrice!.amount.toString(),
                       style: Styles.style20.copyWith(fontWeight: FontWeight.bold),
                     ),
                     BookRating(rates: book.volumeInfo.ratingsCount != null? book.volumeInfo.ratingsCount.toString() : '0',ratingPercentage: book.volumeInfo.averageRating != null? book.volumeInfo.averageRating.toString() : '0'),

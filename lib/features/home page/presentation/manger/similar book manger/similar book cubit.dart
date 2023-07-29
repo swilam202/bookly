@@ -7,7 +7,7 @@ import '../../../data/repos/home page repo.dart';
 import '../newest book manager/newest book state.dart';
 
 class SimilarBookCubit extends Cubit<SimilarBookState>{
-  SimilarBookCubit( {required this.homePageRepo}):super(SimilarBookInitialState());
+  SimilarBookCubit( this.homePageRepo):super(SimilarBookInitialState());
 
 
   HomePageRepo homePageRepo;

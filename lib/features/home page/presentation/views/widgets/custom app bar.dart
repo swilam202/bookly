@@ -1,11 +1,12 @@
 
 
 import 'package:bookly/core/utils/router.dart';
+import 'package:bookly/features/search%20page/presentation/views/serach%20page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
-
+// import 'package:go_router/go_router.dart';
+//
 import '../../../../../constants.dart';
 import '../../../data/repos/home page repo implementation.dart';
 import '../../manger/featured book manager/featured book cubit.dart';
@@ -22,7 +23,7 @@ class CustomAppBar extends StatelessWidget {
         children: [
           SvgPicture.asset(kLogo),
           IconButton(onPressed: ()async{
-            GoRouter.of(context).push(AppRouter.rSearch);
+            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SearchPage(),),);
             //BlocProvider.of<FeaturedBookCubit>(context).getData();
            // print('done /////////////////////////////////////////');
           }, icon: const Icon(Icons.search),),

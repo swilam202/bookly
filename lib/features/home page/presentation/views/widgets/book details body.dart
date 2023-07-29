@@ -1,4 +1,5 @@
 import 'package:bookly/core/widgete/loading%20state.dart';
+import 'package:bookly/core/widgete/toast.dart';
 import 'package:bookly/features/home%20page/data/models/book_model/book_model.dart';
 import 'package:bookly/features/home%20page/presentation/manger/similar%20book%20manger/similar%20book%20cubit.dart';
 import 'package:bookly/features/home%20page/presentation/manger/similar%20book%20manger/similar%20book%20state.dart';
@@ -38,6 +39,7 @@ class _BookDetailsBodyState extends State<BookDetailsBody> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
           child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
             child: Column(
               children: [
                 const BookDetailsAppBar(),
@@ -76,8 +78,8 @@ class _BookDetailsBodyState extends State<BookDetailsBody> {
                       child: CustomButton(
                         backgroundColor: Colors.white,
                         foregroundColor: Colors.black,
-                        text:  const Text(
-                           'Free',
+                        text:   Text(
+                          widget.book.saleInfo?.retailPrice?.amount == null? 'Free':widget.book.saleInfo!.retailPrice!.amount.toString(),
                           style: Styles.style18,
                         ),
                         onPressed: () async{
@@ -88,12 +90,11 @@ class _BookDetailsBodyState extends State<BookDetailsBody> {
                               await launchUrl(url,mode: LaunchMode.externalApplication,);
                             }
                             else{
-                              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("sorry can't open this link"),),);
+                              showToast();
                             }
                           }
                           else{
-                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("sorry can't open this link"),),);
-
+                            showToast();
                           }
 
 
@@ -121,8 +122,7 @@ class _BookDetailsBodyState extends State<BookDetailsBody> {
                               await launchUrl(url,mode: LaunchMode.externalApplication,);
                             }
                             else{
-                               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("sorry can't open this link"),),);
-                            }
+                              showToast();                            }
 
 
 

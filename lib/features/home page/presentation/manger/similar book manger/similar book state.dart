@@ -2,6 +2,8 @@
 
 import '../../../data/models/book_model/book_model.dart';
 
+//import '../../../../../core/book model/book model.dart';
+
 class SimilarBookState{}
 
 class SimilarBookInitialState extends SimilarBookState{}
