@@ -1,3 +1,4 @@
+import 'package:bookly/core/widgete/loading%20state.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,8 +19,8 @@ class BookImage extends StatelessWidget {
         child: CachedNetworkImage(
           fit: BoxFit.fill,
           imageUrl: image ?? '',
-          placeholder: (context, url) => const Center(child:  CircularProgressIndicator()),
-          errorWidget: (context, url, error) => const Icon(Icons.error),
+          placeholder: (context, url) => const Center(child:  LoadingState()),
+          errorWidget: (context, url, error) => const Icon(Icons.image),
         ),
       ),
     );

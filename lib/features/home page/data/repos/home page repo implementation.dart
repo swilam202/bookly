@@ -14,7 +14,7 @@ class HomePageRepoImplementation implements HomePageRepo {
     try {
       Map<String, dynamic> data = await apiService.getData(
           endpoint:
-          'Filtering=free-ebooks&Sorting=relevance&q=engineering');
+          'Sorting=relevance&q=engineering');
       List<BookModel> books = [];
       for (var element in data['items']) {
         books.add(BookModel.fromJson(element));
@@ -37,7 +37,7 @@ class HomePageRepoImplementation implements HomePageRepo {
     try {
       Map<String, dynamic> data = await apiService.getData(
           endpoint:
-          'Filtering=free-ebooks&Sorting=newest&q=programming');
+          'Sorting=newest&q=programming');
       List<BookModel> books = [];
       for (var element in data['items']) {
         books.add(BookModel.fromJson(element));
@@ -58,7 +58,7 @@ class HomePageRepoImplementation implements HomePageRepo {
     try {
       Map<String, dynamic> data = await apiService.getData(
           endpoint:
-          'Filtering=free-ebooks&Sorting=newest&q=$category');
+          'Sorting=newest&q=$category');
       List<BookModel> books = [];
       for (var element in data['items']) {
         books.add(BookModel.fromJson(element));

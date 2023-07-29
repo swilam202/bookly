@@ -4,6 +4,7 @@ import 'package:bookly/features/home%20page/presentation/manger/similar%20book%2
 import 'package:bookly/features/home%20page/presentation/manger/similar%20book%20manger/similar%20book%20state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../core/utils/styles.dart';
 import '../../../../../core/widgete/book image.dart';
@@ -75,11 +76,29 @@ class _BookDetailsBodyState extends State<BookDetailsBody> {
                       child: CustomButton(
                         backgroundColor: Colors.white,
                         foregroundColor: Colors.black,
-                        text: const Text(
-                          'Free',
+                        text:  const Text(
+                           'Free',
                           style: Styles.style18,
                         ),
-                        onPressed: () {},
+                        onPressed: () async{
+
+                          if(widget.book.accessInfo?.pdf?.isAvailable == true){
+                            Uri url = Uri.parse(widget.book.accessInfo?.pdf?.acsTokenLink ?? '');
+                            if(await canLaunchUrl(url)){
+                              await launchUrl(url,mode: LaunchMode.externalApplication,);
+                            }
+                            else{
+                              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("sorry can't open this link"),),);
+                            }
+                          }
+                          else{
+                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("sorry can't open this link"),),);
+
+                          }
+
+
+
+                        },
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(16),
                           bottomLeft: Radius.circular(16),
@@ -92,10 +111,22 @@ class _BookDetailsBodyState extends State<BookDetailsBody> {
                         backgroundColor: const Color(0xffEF8262),
                         foregroundColor: Colors.white,
                         text: const Text(
-                          'Free Preview',
+                          'Preview',
                           style: Styles.style16,
                         ),
-                        onPressed: () {},
+                        onPressed: () async{
+
+                          Uri url = Uri.parse(widget.book.accessInfo?.webReaderLink ?? '');
+                            if(await canLaunchUrl(url)){
+                              await launchUrl(url,mode: LaunchMode.externalApplication,);
+                            }
+                            else{
+                               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("sorry can't open this link"),),);
+                            }
+
+
+
+                        },
                         borderRadius: const BorderRadius.only(
                           topRight: Radius.circular(16),
                           bottomRight: Radius.circular(16),
