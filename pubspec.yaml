@@ -37,10 +37,28 @@ dependencies:
   cached_network_image: ^3.2.3
   url_launcher: ^6.1.12
   fluttertoast: ^8.2.2
+  flutter_launcher_icons: "^0.13.1"
   loading_animation_widget: ^1.2.0+4
   flutter:
     sdk: flutter
 
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/bookly.png"
+  web:
+    generate: true
+    image_path: "assets/images/bookly.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+  windows:
+    generate: true
+    image_path: "assets/images/bookly.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "assets/images/bookly.png"
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

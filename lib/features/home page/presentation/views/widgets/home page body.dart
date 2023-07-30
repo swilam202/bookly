@@ -1,20 +1,16 @@
-
-
-
-import 'package:bookly/core/widgete/custom%20horizontal%20list%20view.dart';
-import 'package:bookly/core/widgete/error%20messsage%20state.dart';
-import 'package:bookly/core/widgete/loading%20state.dart';
-import 'package:bookly/features/home%20page/presentation/manger/newest%20book%20manager/newest%20book%20cubit.dart';
-import 'package:bookly/features/home%20page/presentation/manger/newest%20book%20manager/newest%20book%20state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '';
+
 import '../../../../../core/utils/styles.dart';
+import '../../../../../core/widgete/custom horizontal list view.dart';
+import '../../../../../core/widgete/custom loading state.dart';
 import '../../../../../core/widgete/custom vertical list view.dart';
-import '../../../data/repos/home page repo implementation.dart';
+import '../../../../../core/widgete/error messsage state.dart';
 import '../../manger/featured book manager/featured book cubit.dart';
 import '../../manger/featured book manager/featured book state.dart';
-import 'custom app bar.dart';
+import '../../manger/newest book manager/newest book cubit.dart';
+import '../../manger/newest book manager/newest book state.dart';
+import 'custom home page appbar.dart';
 
 class HomePageBody extends StatefulWidget {
   const HomePageBody({super.key});
@@ -24,69 +20,60 @@ class HomePageBody extends StatefulWidget {
 }
 
 class _HomePageBodyState extends State<HomePageBody> {
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-   // HomePageRepoImplementation().fetchFeaturedData();
-   // HomePageRepoImplementation().fetchFeaturedData();
   }
 
   @override
   Widget build(BuildContext context) {
-    return   SafeArea(
+    return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30),
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
-           SliverToBoxAdapter(
-             child: Column(
-               crossAxisAlignment: CrossAxisAlignment.start,
-               children: [
-                 CustomAppBar(),
-                 BlocBuilder<FeaturedBookCubit,FeaturedBookState>(builder: (context,state){
-                 //  BlocProvider.of<FeaturedBookCubit>(context).getData();
-                   if(state is FeaturedBookSuccessState){
-                     //List<String> images = state.books.map((item) => item.volumeInfo.imageLinks!.thumbnail).toList();
-                     return CustomHorizontalListView(books: state.books,);
-                   }
-                   else if(state is FeaturedBookFailureState){
-                     return ErrorMessageState(errorMessage: state.errorMessage);
-                   }
-                   else{
-                     return LoadingState();
-                   }
-                 }),
-
-                 const SizedBox(height: 48),
-                 Text('Newest Books',style: Styles.style18),
-                 SizedBox(height: 20),
-               ],
-             ),
-           ),
-            SliverFillRemaining(
-
-
-              child:  BlocBuilder<NewestBookCubit,NewestBookState>(builder: (context,state){
-                //  BlocProvider.of<FeaturedBookCubit>(context).getData();
-                if(state is NewestBookSuccessState){
-                 // List<String> images = state.books.map((item) => item.volumeInfo.imageLinks!.thumbnail).toList();
-                  return CustomVerticalListView(books: state.books,);
-                }
-                else if(state is NewestBookFailureState){
-                  return ErrorMessageState(errorMessage: state.errorMessage);
-                }
-                else{
-                  return LoadingState();
-                }
-              }),
-
-
-
+            SliverToBoxAdapter(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const CustomAppBar(),
+                  BlocBuilder<FeaturedBookCubit, FeaturedBookState>(
+                    builder: (context, state) {
+                      if (state is FeaturedBookSuccessState) {
+                        return CustomHorizontalListView(
+                          books: state.books,
+                        );
+                      } else if (state is FeaturedBookFailureState) {
+                        return ErrorMessageState(
+                            errorMessage: state.errorMessage);
+                      } else {
+                        return const LoadingState();
+                      }
+                    },
+                  ),
+                  const SizedBox(height: 48),
+                  const Text('Newest Books', style: Styles.style18),
+                  const SizedBox(height: 20),
+                ],
+              ),
             ),
-
+            SliverFillRemaining(
+              child: BlocBuilder<NewestBookCubit, NewestBookState>(
+                builder: (context, state) {
+                  if (state is NewestBookSuccessState) {
+                    return CustomVerticalListView(
+                      books: state.books,
+                    );
+                  } else if (state is NewestBookFailureState) {
+                    return ErrorMessageState(errorMessage: state.errorMessage);
+                  } else {
+                    return const LoadingState();
+                  }
+                },
+              ),
+            ),
           ],
         ),
       ),

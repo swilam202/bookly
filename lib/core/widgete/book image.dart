@@ -1,14 +1,14 @@
-import 'package:bookly/core/widgete/loading%20state.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
-import 'image loading.dart';
+import 'image loading state.dart';
+
 
 class BookImage extends StatelessWidget {
-   BookImage({super.key, this.image});
+  const BookImage({super.key, this.image});
 
-   String? image;
+  final String? image;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,7 +21,7 @@ class BookImage extends StatelessWidget {
         child: CachedNetworkImage(
           fit: BoxFit.fill,
           imageUrl: image ?? '',
-          placeholder: (context, url) => const Center(child:  ImageLoading()),
+          placeholder: (context, url) => const Center(child: ImageLoading()),
           errorWidget: (context, url, error) => const Icon(Icons.image),
         ),
       ),

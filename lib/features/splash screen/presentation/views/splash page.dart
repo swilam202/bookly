@@ -1,12 +1,8 @@
-import 'package:bookly/core/utils/router.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-//import 'package:go_router/go_router.dart';
-
 
 import '../../../../constants.dart';
 import '../../../home page/presentation/views/home page.dart';
-import 'widgets/splash body.dart';
+import 'widgets/splash page body.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -69,7 +65,11 @@ class _SplashScreenState extends State<SplashScreen>
       (value) {
         qoutesController.forward().then(
           (value) {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>HomePage(),),);
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (context) => HomePage(),
+              ),
+            );
           },
         );
       },

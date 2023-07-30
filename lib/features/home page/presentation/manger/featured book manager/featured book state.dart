@@ -1,17 +1,19 @@
+import '../../../../../core/models/book_model/book_model.dart';
 
+abstract class FeaturedBookState {}
 
-//import '../../../../../core/book model/book model.dart';
-import '../../../data/models/book_model/book_model.dart';
+class FeaturedBookInitialState extends FeaturedBookState {}
 
-abstract class FeaturedBookState{}
+class FeaturedBookLoadingState extends FeaturedBookState {}
 
-class FeaturedBookInitialState extends FeaturedBookState{}
-class FeaturedBookLoadingState extends FeaturedBookState{}
-class FeaturedBookFailureState extends FeaturedBookState{
+class FeaturedBookFailureState extends FeaturedBookState {
   String errorMessage;
+
   FeaturedBookFailureState(this.errorMessage);
 }
-class FeaturedBookSuccessState extends FeaturedBookState{
+
+class FeaturedBookSuccessState extends FeaturedBookState {
   List<BookModel> books;
+
   FeaturedBookSuccessState(this.books);
 }

@@ -1,18 +1,19 @@
+import '../../../../../core/models/book_model/book_model.dart';
 
+abstract class NewestBookState {}
 
-import '../../../data/models/book_model/book_model.dart';
+class NewestBookInitialState extends NewestBookState {}
 
-//import '../../../../../core/book model/book model.dart';
+class NewestBookLoadingState extends NewestBookState {}
 
-abstract class NewestBookState{}
-
-class NewestBookInitialState extends NewestBookState{}
-class NewestBookLoadingState extends NewestBookState{}
-class NewestBookFailureState extends NewestBookState{
+class NewestBookFailureState extends NewestBookState {
   String errorMessage;
+
   NewestBookFailureState(this.errorMessage);
 }
-class NewestBookSuccessState extends NewestBookState{
+
+class NewestBookSuccessState extends NewestBookState {
   List<BookModel> books;
+
   NewestBookSuccessState(this.books);
 }

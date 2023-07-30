@@ -5,7 +5,7 @@ class Failures {
 
   Failures(this.errorMessage);
 
-  factory Failures.exception(DioException exception){
+  factory Failures.exception(DioException exception) {
     switch (exception.type) {
       case DioException.badResponse:
         return Failures('sorry, bad response');
@@ -24,6 +24,3 @@ class Failures {
     }
   }
 }
-
-
-

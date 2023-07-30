@@ -21,7 +21,6 @@ class CustomButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: TextButton(
-
         style: ButtonStyle(
           foregroundColor: MaterialStateProperty.all(foregroundColor),
           backgroundColor: MaterialStateProperty.all(backgroundColor),
