@@ -28,7 +28,7 @@ class SplashBody extends StatelessWidget {
           opacity: qoutesAnimation,
           child: const Text(
             'Reading is essential for those who seek to rise above the ordinary." - Jim Rohn',
-            style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),
         ),
