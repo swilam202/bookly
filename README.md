@@ -1,16 +1,13 @@
-# bookly
+book reading app that utilizes the Google Books API for searching, reading, and downloading books. The app incorporates the bloc pattern and bloc state management.
 
-A new Flutter project.
+splash page
+![Screenshot_2024-04-03-13-05-54-30_0c0f41917da04d1f427e583bab1578cb](https://github.com/swilam202/bookly/assets/123952365/8b04615f-61b6-48ac-be8c-bbab376a8cd1)
 
-## Getting Started
+home page
+![Screenshot_2024-04-03-13-05-57-33_0c0f41917da04d1f427e583bab1578cb](https://github.com/swilam202/bookly/assets/123952365/008bc3e3-4aee-40a0-8474-068d9fbf2d99)
 
-This project is a starting point for a Flutter application.
+search page
+![Screenshot_2024-04-03-13-06-13-97_0c0f41917da04d1f427e583bab1578cb](https://github.com/swilam202/bookly/assets/123952365/49dbbfae-0119-4434-a413-f2479300957a)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+details page
+![Screenshot_2024-04-03-13-06-01-45_0c0f41917da04d1f427e583bab1578cb](https://github.com/swilam202/bookly/assets/123952365/40fabe1c-3343-4f5e-a0c7-3f03a14a0cb5)
